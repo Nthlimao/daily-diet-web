@@ -1,0 +1,38 @@
+.toolbar {
+    height: 40px;
+    padding: 5px 10px;
+    background-color: #F7F7F7;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.toolbar .external-links a {
+    display: block;
+    font-size: 14px;
+    color: #BAC2C4;
+    padding: 5px;    
+}
+
+.toolbar .external-links a#github:hover {
+    color: #24292E;
+}
+
+.toolbar .download-links a {
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px;
+    color: #BAC2C4;
+}
+
+.toolbar .download-links a:hover {
+    color: #96C5A4;
+}

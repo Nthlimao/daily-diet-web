@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+input, select {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 50px 50px;
+    background-color: #96C5A4;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#96C5A4, #C0D9C3);
+}
+
+.transition {
+    -webkit-transition: all ease .3s;
+    -o-transition: all ease .3s;
+    transition: all ease .3s;
+}
+
+.main-container {
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    height: calc(100vh - 100px);
+}
+
+/* FORM */
+
+.form .input-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #F7F7F7;
+    margin-bottom: 12px;
+}
+
+.form .input-group input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding: 5px;
+    line-height: 30px;
+    background: transparent;
+}
+
+.form .input-group .fas {
+    color: #BAC2C4;
+    padding: 5px 5px 5px 10px;
+}
+
+/* BUTTON */
+.btn {
+    border:none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 2px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn.btn-primary {
+    color: #FFFFFF;
+    background-color: #96C5A4;
+}
+
+.btn.btn-primary:hover {
+    background-color: #62AC8D ;
+}
+
+/* ROWS AND COLUMNS */
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    margin: 0 -5px;
+}
+
+.col {
+    margin: 0 5px;
+}
+
+.col-12 {
+    width: 100%;
+    max-width: 100%;
+}
+.col-6 {
+    width: 50%;
+    max-width: 50%;
+}

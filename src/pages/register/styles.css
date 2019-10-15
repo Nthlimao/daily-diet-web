@@ -1,0 +1,20 @@
+.page-register {
+    height: calc(100% - 40px);
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.page-register .container-register{
+    width: 600px;
+    max-width: 100%;
+}
