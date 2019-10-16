@@ -11,16 +11,23 @@ const Register = () => {
     console.log(data)
 
     const handleChange = (event) => {
-        event.persist();
-        setVariables(variables => ({ ...variables, [event.target.name]: event.target.value }));
+        event.persist();       
+        if(event.target.name === 'weight' || event.target.name === 'height'){
+            const value = parseFloat(event.target.value);
+            setVariables(variables => ({ ...variables, [event.target.name]: value }));
+        } else {
+            setVariables(variables => ({ ...variables, [event.target.name]: event.target.value }));
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()                
+        submit({ variables });
     }
 
     return (
         <div className="page-register">
-            <form className="form container-register" onSubmit={(e) => {
-                e.preventDefault()
-                submit({ variables });
-            }}>
+            <form className="form container-register" onSubmit={(e) => handleSubmit(e)}>
                 <div className="row">
                     <div className="col col-6">
                         <div className="input-group">
