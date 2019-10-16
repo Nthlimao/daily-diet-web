@@ -1,29 +1,36 @@
-import React from 'react';
-import useRegisterForm from './hook';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { REGISTER } from '../../services/schemas';
 
 import './styles.css';
 
 const Register = () => {
-    const signup = () => {
-        alert(`User Created!
-               Name: ${inputs.firstName} ${inputs.lastName}
-               Email: ${inputs.email}`);
+    const [variables, setVariables] = useState({ name: "", cpf: "", email: "", password: "", confirmPassword: "", dateOfBirth: "", weight: "", height: "" });
+    const [submit, { data, loading, error }] = useMutation(REGISTER);
+
+    console.log(data)
+
+    const handleChange = (event) => {
+        event.persist();
+        setVariables(variables => ({ ...variables, [event.target.name]: event.target.value }));
     }
-    const { inputs, handleInputChange, handleSubmit } = useRegisterForm(signup);
 
     return (
         <div className="page-register">
-            <form className="form container-register" onSubmit={handleSubmit}>
+            <form className="form container-register" onSubmit={(e) => {
+                e.preventDefault()
+                submit({ variables });
+            }}>
                 <div className="row">
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="text" placeholder="Nome" name="name" onChange={handleInputChange} value={inputs.name} required />
+                            <input type="text" placeholder="Nome" name="name" onChange={(e) => handleChange(e)} value={variables.name} required />
                             <i className="fas fa-user"></i>
                         </div>
                     </div>
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="text" placeholder="CPF" name="cpf" onChange={handleInputChange} value={inputs.cpf} required />
+                            <input type="text" placeholder="CPF" name="cpf" onChange={(e) => handleChange(e)} value={variables.cpf} required />
                             <i className="fas fa-id-badge"></i>
                         </div>
                     </div>
@@ -31,13 +38,13 @@ const Register = () => {
                 <div className="row">
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="email" placeholder="E-mail" name="email" onChange={handleInputChange} value={inputs.email} required />
+                            <input type="email" placeholder="E-mail" name="email" onChange={(e) => handleChange(e)} value={variables.email} required />
                             <i className="fas fa-envelope"></i>
                         </div>
                     </div>
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="text" placeholder="Data de nascimento" name="dateOfBirth" onChange={handleInputChange} value={inputs.dateOfBirth} required />
+                            <input type="text" placeholder="Data de nascimento" name="dateOfBirth" onChange={(e) => handleChange(e)} value={variables.dateOfBirth} required />
                             <i className="fas fa-birthday-cake"></i>
                         </div>
                     </div>
@@ -45,13 +52,13 @@ const Register = () => {
                 <div className="row">
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="password" placeholder="Senha" name="password" onChange={handleInputChange} value={inputs.password} required />
+                            <input type="password" placeholder="Senha" name="password" onChange={(e) => handleChange(e)} value={variables.password} required />
                             <i className="fas fa-lock"></i>
                         </div>
                     </div>
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="password" placeholder="Repetir senha" name="confirmPassword" onChange={handleInputChange} value={inputs.confirmPassword} required />
+                            <input type="password" placeholder="Repetir senha" name="confirmPassword" onChange={(e) => handleChange(e)} value={variables.confirmPassword} required />
                             <i className="fas fa-lock"></i>
                         </div>
                     </div>
@@ -59,13 +66,13 @@ const Register = () => {
                 <div className="row">
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="number" placeholder="Peso" name="weight" min="1" max="500" onChange={handleInputChange} value={inputs.weight} required />
+                            <input type="number" placeholder="Peso" name="weight" min="1" max="500" onChange={(e) => handleChange(e)} value={variables.weight} required />
                             <i className="fas fa-weight"></i>
                         </div>
                     </div>
                     <div className="col col-6">
                         <div className="input-group">
-                            <input type="number" placeholder="Altura" name="height" min="1" max="1000" onChange={handleInputChange} value={inputs.height} required />
+                            <input type="number" placeholder="Altura" name="height" min="1" max="1000" onChange={(e) => handleChange(e)} value={variables.height} required />
                             <i className="fas fa-ruler-vertical"></i>
                         </div>
                     </div>
