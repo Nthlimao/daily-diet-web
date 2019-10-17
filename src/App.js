@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from './components'
 import Routes from './routes';
 
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 const App = () => {

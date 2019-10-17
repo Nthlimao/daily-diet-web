@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import { useMutation } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
 import { Loader } from '../../components';
-import { useMutation } from '@apollo/react-hooks';
 import { LOGIN } from '../../services/schemas';
 import auth from '../../auth';
 
@@ -13,6 +14,11 @@ const Login = () => {
     email: "",
     password: "",
   });  
+  
+  if(error) {
+    console.log(error.message);
+    toast.error('error');
+  }
   
   const handleChange = (event) => {
     event.persist();
@@ -33,18 +39,20 @@ const Login = () => {
 
   return (
     <div className="page-login">
-      <Loader active={loading}/>
-      <form className="form container-login" onSubmit={(e) => handleSubmit(e)}>
-        <div className="input-group">
-          <input type="email" placeholder="E-mail" name="email" value={variables.email} onChange={(e) => handleChange(e)} required/>
-          <i className="fas fa-envelope"></i>
-        </div>
-        <div className="input-group">
-          <input type="password" placeholder="Senha" name="password" value={variables.password} onChange={(e) => handleChange(e)} required/>
-          <i className="fas fa-lock"></i>
-        </div>
-        <button className="btn btn-primary transition">Login</button>
-      </form>
+        <ToastContainer/>
+        <Loader active={loading}/>
+        <form className="form container-login" onSubmit={(e) => handleSubmit(e)}>
+          <div className="input-group">
+            <input type="email" placeholder="E-mail" name="email" value={variables.email} onChange={(e) => handleChange(e)} required/>
+            <i className="fas fa-envelope"></i>
+          </div>
+          <div className="input-group">
+            <input type="password" placeholder="Senha" name="password" value={variables.password} onChange={(e) => handleChange(e)} required/>
+            <i className="fas fa-lock"></i>
+          </div>
+          <button className="btn btn-primary transition">Login</button>
+        </form>
+
     </div>
   );
 }
