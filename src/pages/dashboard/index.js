@@ -1,20 +1,18 @@
 import React from 'react';
-import { useHistory  } from 'react-router-dom';
-import auth from '../../auth';
+import DashboardRoutes from '../../routes/dashboard.route';
+import { useRouteMatch } from 'react-router-dom';
+import { Sidebar } from '../../components';
+// import auth from '../../auth';
 
 const Dashboard = () => {
-    const history = useHistory();
+    // const history = useHistory();
+    const match = useRouteMatch();
 
     return (
         <div className="container">
-            <h3>Dashboard</h3>
-            <button 
-                onClick={() => {
-                    auth.clean();
-                    history.push("/login");
-                }}
-            >Sair</button>
-    </div>
+            <Sidebar/>            
+            <DashboardRoutes match={match} />
+        </div>
   );
 }
 

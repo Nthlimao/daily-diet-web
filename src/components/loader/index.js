@@ -4,7 +4,7 @@ import './styles.css';
 const Loader = ({ active = false }) => (
     <div className={active ? "loader-wrap active": "loader-wrap"}>
         <div className="loader-icon">
-            <img src="images/loader.svg" />
+            <img alt="carregando..." src="http://localhost:3000/images/loader.svg" />
         </div>
     </div>
 );

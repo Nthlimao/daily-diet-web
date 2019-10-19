@@ -45,3 +45,25 @@ export const REGISTER = gql`
         }
     }
 `;
+
+export const UPDATEWEIGHT = gql`
+    mutation UpdateWeight($weight: Float!) {
+        updateWeight(weight: $weight) {
+            weights  {
+                id
+                value
+            }
+        }
+    }
+`;
+
+export const UPDATEHEIGHT = gql`
+    mutation UpdateHeight($height: Float!) {
+        updateHeight(height: $height) {
+            heights {
+                id
+                value
+            }
+        }
+    }
+`;

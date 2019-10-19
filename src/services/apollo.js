@@ -1,10 +1,12 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, ApolloLink, HttpLink } from "apollo-boost";
+import auth from '../auth';
 
 const httpLink = new HttpLink({ uri: 'https://daily-diet-node.herokuapp.com' });
 
 const authLink = new ApolloLink((operation, forward) => {
-    const token = "";
+    const token = auth.token();
+    console.log(token);
   
     operation.setContext({
       headers: {
@@ -16,8 +18,8 @@ const authLink = new ApolloLink((operation, forward) => {
 });
 
   
-const client = new ApolloClient({
-    link: httpLink, //verificar isso aqui ---> .concat(authLink),
+const client = new ApolloClient({    
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 });
 

@@ -1,0 +1,31 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100vh;
+    padding: 50px 0;
+}
+
+.sidebar .sidebar-menu {
+    padding: 20px 7px 10px;
+}
+.sidebar .sidebar-menu .menu-link{
+    display: block;
+    color: #FFFFFF;
+    font-size: 18px;    
+    text-align: center;
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+
+.sidebar .sidebar-menu .menu-link.active,
+.sidebar .sidebar-menu .menu-link:hover {
+    background: #FFFFFF;
+    color: #96C5A4;
+}
+
+.minus-2-left {
+    margin-left: -2px;
+}

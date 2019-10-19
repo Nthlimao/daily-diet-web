@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import { useMutation } from '@apollo/react-hooks';
-import { Redirect } from 'react-router-dom';
-import { Loader } from '../../components';
+import { Redirect, Link } from 'react-router-dom';
+import { Loader, Header } from '../../components';
 import { LOGIN } from '../../services/schemas';
 import auth from '../../auth';
 
@@ -10,14 +9,12 @@ import './styles.css';
 
 const Login = () => {
   const [submit, { data, loading, error }] = useMutation(LOGIN);
-  const [variables, setVariables] = useState({
-    email: "",
-    password: "",
-  });  
+  const [variables, setVariables] = useState({ email: '', password: '' });  
+
+  let errorMessage = '';
   
   if(error) {
-    console.log(error.message);
-    toast.error('error');
+    errorMessage = <p>E-mail ou senha inválido.</p>;
   }
   
   const handleChange = (event) => {
@@ -38,21 +35,28 @@ const Login = () => {
   }
 
   return (
-    <div className="page-login">
-        <ToastContainer/>
-        <Loader active={loading}/>
-        <form className="form container-login" onSubmit={(e) => handleSubmit(e)}>
-          <div className="input-group">
-            <input type="email" placeholder="E-mail" name="email" value={variables.email} onChange={(e) => handleChange(e)} required/>
-            <i className="fas fa-envelope"></i>
-          </div>
-          <div className="input-group">
-            <input type="password" placeholder="Senha" name="password" value={variables.password} onChange={(e) => handleChange(e)} required/>
-            <i className="fas fa-lock"></i>
-          </div>
-          <button className="btn btn-primary transition">Login</button>
-        </form>
-
+    <div>
+      <Header/>
+      <div className="page-login">
+          <Loader active={loading}/>
+          <form className="form container-login" onSubmit={(e) => handleSubmit(e)}>
+            <div className="form-error-message">
+              {errorMessage}
+            </div>
+            <div className="input-group">
+              <input type="email" placeholder="E-mail" name="email" value={variables.email} onChange={(e) => handleChange(e)} required/>
+              <i className="fas fa-envelope"></i>
+            </div>
+            <div className="input-group">
+              <input type="password" placeholder="Senha" name="password" value={variables.password} onChange={(e) => handleChange(e)} required/>
+              <i className="fas fa-lock"></i>
+            </div>
+            <button className="btn btn-primary transition">Login</button>
+            <div className="form-footer-links">
+              <Link className="link" to="/register">Fazer Cadastro</Link>
+            </div>
+          </form>
+      </div>
     </div>
   );
 }
