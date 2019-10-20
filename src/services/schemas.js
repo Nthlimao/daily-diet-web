@@ -67,3 +67,71 @@ export const UPDATEHEIGHT = gql`
         }
     }
 `;
+
+export const SEARCHDAILY = gql`
+    query SearchDaily($date: String!){
+        searchDaily(date: $date) {
+            date
+            breakfast {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+            morning_snack {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+            lunch {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+            afternoon_snack {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+            dinner {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+            supper {
+                title
+                itens {
+                    id
+                    food
+                    quantity
+                    measure
+                    calories
+                }
+            }
+        }
+    }
+`;

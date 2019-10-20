@@ -7,10 +7,13 @@ const Sidebar = () => {
     const location = useLocation();
     const pathname = location.pathname;    
 
+    const setClassName = (path) => (path === pathname) ? 'menu-link active' : 'menu-link';
+
     const links = [
-        { to: '/dashboard', className: pathname === '/dashboard' ? 'menu-link active' : 'menu-link', icon: 'home minus-2-left' },
-        { to: '/dashboard/atualizar-peso', className: pathname === '/dashboard/atualizar-peso' ? 'menu-link active' : 'menu-link', icon: 'weight'},
-        { to: '/dashboard/atualizar-altura', className: pathname === '/dashboard/atualizar-altura' ? 'menu-link active' : 'menu-link', icon: 'ruler-vertical'},
+        { to: '/dashboard', className: setClassName('/dashboard'), icon: 'home minus-2-left' },
+        { to: '/dashboard/adicionar-refeicao', className: setClassName('/dashboard/adicionar-refeicao'), icon: 'utensils'},
+        { to: '/dashboard/atualizar-peso', className: setClassName('/dashboard/atualizar-peso'), icon: 'weight'},
+        { to: '/dashboard/atualizar-altura', className: setClassName('/dashboard/atualizar-altura'), icon: 'ruler-vertical'},
     ];
     
     return (
@@ -19,7 +22,6 @@ const Sidebar = () => {
             {links.map((link, index) => (
                 <Link to={link.to} className={link.className} key={index}><i className={'fas fa-' + link.icon}></i></Link>
             ))}
-            <a href="//link-qualquer.com.br" className="menu-link"><i className="fas fa-utensils"></i></a>
         </div>
     </div>
     );

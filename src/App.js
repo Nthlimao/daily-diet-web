@@ -3,6 +3,7 @@ import Routes from './routes';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
+import './styles/datepicker.css';
 
 const App = () => {
   return (
