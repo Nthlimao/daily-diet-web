@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { Loader } from '../../components';
 import { SEARCHDAILY } from '../../services/schemas';
+import { getErrorGraphql } from '../../helpers/error.helper';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
@@ -16,19 +17,19 @@ const Meal = () => {
             date: moment(selected.startDate).format("YYYY-MM-DD")
         }
     });
-    
-    const onCompleted = (data) => { return data; };
-    const onError = (error) => { return error; };
-    if (onCompleted || onError) {
-        if (onCompleted && !loading && !error) {
-            console.log(moment(data.searchDaily.date).format("YYYY-MM-DD"));
-        } else if (onError && !loading && error) {
-            console.log(error);
+
+    let errorMessage = false;
+    let daily = null;
+
+    if(data || error) {
+        if(data && !loading && !error) {
+            const { searchDaily } = data;
+            daily = searchDaily;
+            console.log(searchDaily);
+        } else if (!data && !loading && error) {
+            errorMessage = getErrorGraphql(error);
         }
     }
-
-    // useEffect(() => {
-    // }, [data, loading, error]);
 
     const handleChange = date => {
         setSelected({ startDate: date });
@@ -49,6 +50,10 @@ const Meal = () => {
                     </div>
                     <div className="col-3">
                         <DatePicker selected={selected.startDate} onChange={handleChange} />
+                    </div>
+                    <div className="col-4">
+                        { daily === null ? <button className="btn btn-primary transition">Adicionar Refeições do dia</button> : '' }
+                        
                     </div>
                 </div>
                 <div></div>

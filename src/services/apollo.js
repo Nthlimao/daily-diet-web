@@ -6,7 +6,6 @@ const httpLink = new HttpLink({ uri: 'https://daily-diet-node.herokuapp.com' });
 
 const authLink = new ApolloLink((operation, forward) => {
     const token = auth.token();
-    console.log(token);
   
     operation.setContext({
       headers: {
