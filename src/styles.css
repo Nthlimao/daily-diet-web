@@ -204,6 +204,12 @@ body {
     max-width: 8.333333%;
 }
 
+.col {
+    flex: 0 0 auto;
+    max-width: 100%;
+    margin: 0 5px;
+}
+
 /* TOAST */
 .Toastify__toast {
     border-radius: 3px!important;

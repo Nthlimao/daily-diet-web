@@ -4,7 +4,7 @@ import { ProtectedRoute } from './protected.route'
 
 import Weight from '../pages/weight';
 import Height from '../pages/height';
-import Meal from '../pages/meal';
+import Daily from '../pages/daily';
 
 const DashboardRoutes = ({ match }) => (
     <Switch>
@@ -15,7 +15,7 @@ const DashboardRoutes = ({ match }) => (
             <Height/>
         </ProtectedRoute>
         <ProtectedRoute path={`${match.path}/adicionar-refeicao`}>
-            <Meal/>
+            <Daily/>
         </ProtectedRoute>
     </Switch>
 );

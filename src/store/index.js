@@ -1,13 +1,6 @@
-const getStorage = (key) => {
-    return localStorage.getItem(key);
-}
+import { createStore } from 'redux';
+import { mainReducer } from './reducers.redux';
 
-const setStorage = (key, value) => {
-    localStorage.setItem(key, value);
-}
+const store = createStore(mainReducer);
 
-const clearStorage = (key) => {
-    localStorage.removeItem(key);
-}
-
-export { getStorage, setStorage, clearStorage }
+export default store;

@@ -3,6 +3,10 @@
     border-color: #F0F0F0;
 }
 
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
     border-bottom-color: #F7F7F7;
 }

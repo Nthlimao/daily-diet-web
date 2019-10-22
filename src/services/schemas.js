@@ -135,3 +135,12 @@ export const SEARCHDAILY = gql`
         }
     }
 `;
+
+export const STOREDAILY = gql`
+    mutation StoreDaily($date: String!) {
+        storeDaily(date: $date) {
+            id
+            date           
+        }
+    }
+`;
